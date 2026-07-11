@@ -2,12 +2,12 @@ import { appendFile } from "node:fs/promises";
 import { join } from "node:path";
 
 /**
- * Loads and validates required environment variables.
+ * Validates required environment variables.
  * Exits the process if validation fails
  * 
- * @returns {Array} All of the validated environment variables
+ * @returns {void}
  */
-export async function loadEnvironmentVariables() {
+export async function validateEnvironmentVariables() {
     let PORT = process.env.PORT;
 
     if (PORT) {
@@ -24,10 +24,7 @@ export async function loadEnvironmentVariables() {
         }
     } else {
         log.warn("No PORT supplied; defaulting to 9128");
-        PORT = 9128;
     }
-
-    return [ PORT ];
 }
 
 const LOG_FILE_PATH = join(__dirname, "..", "logs.txt");

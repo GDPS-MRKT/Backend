@@ -2,11 +2,11 @@ import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 import { readdir, stat, rename } from "node:fs/promises"; 
 
-import { loadEnvironmentVariables, log } from "./utils/functions.js";
+import { validateEnvironmentVariables, log } from "./utils/functions.js";
 
 import { global } from "./routes/global.js";
 
-const [PORT] = await loadEnvironmentVariables();
+await validateEnvironmentVariables();
 
 /*
     ELYSIA SETUP
@@ -23,7 +23,7 @@ for (const file of routeFiles) {
     }
 }
 
-app.listen({ port: PORT }, ({ hostname, port }) =>
+app.listen(process.env.PORT || 9128, ({ hostname, port }) =>
     log.info(`Server running on http://${hostname}:${port}/`)
 );
 
