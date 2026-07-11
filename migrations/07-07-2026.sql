@@ -6,6 +6,10 @@ CREATE TABLE users (
     "ip" INET NOT NULL,
     "youtube" VARCHAR(30),
     "github" VARCHAR(39),
+    "twitter" VARCHAR(15),
+    "bluesky" VARCHAR(18),
+    "instagram" VARCHAR(30),
+    "tiktok" VARCHAR(30),
     "telegram" VARCHAR(32),
     "createdOn" TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
